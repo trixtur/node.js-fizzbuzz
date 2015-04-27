@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="//cdn.socket.io/socket.io-1.0.6.js"></script>
+		<script>
+			//var socket = io.connect('http://trixtur.kr0w.com');
+			var socket = io.connect('http://192.168.1.123');
+			socket.on('connect', function() {
+			    socket.emit('final_event', {from_client:"Hello?"});
+			});
+			socket.on('news', function (data) {
+			  $('h1').text(data.from_server);
+			  console.log(data);
+			  socket.emit('my_other_event', { my: data.from_server });
+			});
+			socket.on('final_event', function (data) {
+			  console.log('Ready?',data);
+			});
+		</script>
+	</head>
+	<body>
+		<h1></h1>
+	</body>
+</html>

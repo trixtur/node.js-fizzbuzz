@@ -1,0 +1,26 @@
+<!doctype html>
+<html ng-app>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        <script src="fizzbuzz.js"></script>
+        <style>
+            p {
+                text-align: center;
+                font-size: 5em;
+                font-family: georgia;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>FizzBuzz Game</h1>
+        <div ng-controller="FizzBuzzCtrl">
+            <label>Select a Number:</label>
+            <select ng-model="selectedValue">
+                <option ng-repeat="thisValue in values" value={{thisValue}} >
+                    {{thisValue}}
+                </option>
+            </select>
+            <p>{{selectedResult}}</p>
+        </div>
+    </body>
+</html>
